@@ -1,0 +1,14 @@
+{
+  "name": "Notes",
+  "displayName": "Notes",
+  "expo": {
+    "name": "Notes",
+    "slug": "notes",
+    "version": "1.0.0",
+    "icon": "./icon.png",
+    "android": {
+      "package": "me.app.notes",
+      "versionCode": 1
+    }
+  }
+}
