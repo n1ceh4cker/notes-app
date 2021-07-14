@@ -1,8 +1,10 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
+import store from 'react-native-simple-store'
 
 export const NoteContext = createContext()
 function NoteContextProvider({ children }) {
-  const [notes,setNotes] = useState([
+  const [mount, setMount] = useState(true)
+  const [notes, setNotes] = useState([
     {
       id:7894563,
       title: "Find out your DNS server",
@@ -34,11 +36,21 @@ function NoteContextProvider({ children }) {
       title: "Connecting to mongo" 
     }
   ])
-  const addNote = (note) => {
+  useEffect(() => {
+    async function fetchData(){
+      const nts = await store.get('notes')
+      nts ? setNotes(nts) : await store.save('notes', notes)
+  /* await store.delete('notes')*/
+    }
+    fetchData()
+    }, [mount])
+  const addNote = async(note) => {
+    await store.save('notes',[...notes,note])
     setNotes([...notes,note])
   }
-  const deleteNote = (id) => {
+  const deleteNote = async(id) => {
     const newNotes = notes.filter(note => note.id!==id)
+    await store.save('notes', newNotes)
     setNotes(newNotes)
   }
   return (

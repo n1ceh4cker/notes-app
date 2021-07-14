@@ -4,11 +4,14 @@
   "expo": {
     "name": "Notes",
     "slug": "notes",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "icon": "./icon.png",
+    "privacy": "public",
+    "githubUrl": "https://github.com/n1ceh4cker/notes-app",
     "android": {
       "package": "me.app.notes",
       "versionCode": 1
-    }
+    },
+    "description": ""
   }
 }

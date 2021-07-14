@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Button, RadioButton, TextInput, Subheading, Headline } from 'react-native-paper';
 import { NoteContext } from '../context/NoteContext';
 
@@ -10,7 +10,7 @@ function CreateScreen({ navigation }) {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   return (
-    <View style={{ margin: 15}}>
+    <ScrollView style={{ margin: 15}}>
       <Headline style={{ textAlign: 'center' }}>
         Create Note
       </Headline>
@@ -21,6 +21,8 @@ function CreateScreen({ navigation }) {
         style={{ marginBottom: 10 }}
         onChangeText={(e) => setTitle(e)}
         multiline
+        numberOfLines={3}
+        maxLength={100}
         />
       <TextInput
         mode='outlined'
@@ -29,7 +31,7 @@ function CreateScreen({ navigation }) {
         style={{ marginBottom: 10 }}
         onChangeText={(e) => setContent(e)}
         multiline
-        numberOfLines={3}
+        numberOfLines={8}
         />
       <Subheading>Category</Subheading>
       <RadioButton.Group
@@ -47,6 +49,7 @@ function CreateScreen({ navigation }) {
           setTitle('')
           setContent('')
           setCategory('work')
+          navigation.navigate('Home')
         }
         return(
           <Button
@@ -57,7 +60,7 @@ function CreateScreen({ navigation }) {
           </Button>
         )}}
       </NoteContext.Consumer>
-    </View>
+    </ScrollView>
   )
 }
 

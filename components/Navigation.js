@@ -19,7 +19,7 @@ const CustomNavigationBar = ({ navigation }) => {
 const CustomDrawer = ({ props, navigation, state }) => {
   return(
     <DrawerContentScrollView {...props} >
-      <Drawer.Section title='Note App'>
+      <Drawer.Section title='Notes'>
         <Drawer.Item
           label='Home'
           icon='text-subject'
